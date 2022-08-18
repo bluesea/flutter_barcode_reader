@@ -34,6 +34,9 @@ class ActivityHelper(private var applicationContext: Context?,
 
         activityResultMap[REQ_START_SCAN] = ScanResultHandler(result)
 
+        val intent = Intent("com.lachesis.relase.barcode")
+        sendBroadcast(intent)
+
         val intent = Intent(applicationContext, BarcodeScannerActivity::class.java)
         intent.putExtra(BarcodeScannerActivity.EXTRA_CONFIG, config.toByteArray())
         activity!!.startActivityForResult(intent, REQ_START_SCAN)
